@@ -11,12 +11,21 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 import { Bars3Icon } from "@heroicons/react/20/solid";
 import { classNames } from "../utils";
 import { NAVIGATIONS, TEAMS, TEAM_REPORT_TITLE_HEADER } from "./constants";
-import { format } from "date-fns";
+import Datepicker from "react-tailwindcss-datepicker";
 
 export default function Dashboard({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [value, setValue] = useState({
+    startDate: new Date(),
+    endDate: new Date(),
+  });
+
+  const handleValueChange = (newValue: any) => {
+    console.log("newValue:", newValue);
+    setValue(newValue);
+  };
 
   return (
     <>
@@ -224,12 +233,12 @@ export default function Dashboard({
               <Bars3Icon aria-hidden="true" className="h-5 w-5" />
             </button>
 
-            <div>
-              <p>
-                <span className="font-bold text-gray-500">
-                  {format(new Date(), "yyyy-MM-dd")}
-                </span>
-              </p>
+            <div className="">
+              <Datepicker
+                value={value}
+                onChange={handleValueChange}
+                asSingle={true}
+              />
             </div>
           </div>
           {children}
