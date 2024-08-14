@@ -7,7 +7,7 @@ import {
   DialogPanel,
   TransitionChild,
 } from "@headlessui/react";
-import { XMarkIcon } from "@heroicons/react/24/outline";
+import { ChartPieIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Bars3Icon } from "@heroicons/react/20/solid";
 import { classNames } from "../utils";
 import { NAVIGATIONS, TEAMS, TEAM_REPORT_TITLE_HEADER } from "./constants";
@@ -232,14 +232,15 @@ export default function Dashboard({
               <span className="sr-only">Open sidebar</span>
               <Bars3Icon aria-hidden="true" className="h-5 w-5" />
             </button>
-
-            <div className="">
-              <Datepicker
-                value={value}
-                onChange={handleValueChange}
-                asSingle={true}
-              />
-            </div>
+            <ChartPieIcon aria-hidden="true" className="h-6 w-6 shrink-0" />
+            Dashboard
+            {/*<div className="">*/}
+            {/*  <Datepicker*/}
+            {/*    value={value}*/}
+            {/*    onChange={handleValueChange}*/}
+            {/*    asSingle={true}*/}
+            {/*  />*/}
+            {/*</div>*/}
           </div>
           {children}
         </div>
