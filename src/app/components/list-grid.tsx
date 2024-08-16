@@ -12,9 +12,10 @@ import useSWR from "swr";
 import { format } from "date-fns";
 
 import { classNames, fetcher } from "@/app/utils";
-import { ReportSummary } from "@/app/interface";
+import { ReportSummary } from "../interfaces";
 import { reportNameResolver } from "@/app/utils/report-name-resolver";
 import { REPORT_SUMMARY_TYPE } from "@/app/constants";
+import Link from "next/link";
 
 const figureIconByType = (type: REPORT_SUMMARY_TYPE) => {
   switch (type) {
@@ -33,10 +34,28 @@ const figureIconByType = (type: REPORT_SUMMARY_TYPE) => {
   }
 };
 
+const figureLinkByType = (type: REPORT_SUMMARY_TYPE) => {
+  switch (type) {
+    case REPORT_SUMMARY_TYPE.DAILY_MARKET_INFO_REPORT_SUMMARY:
+      return "/reports/market-info";
+    case REPORT_SUMMARY_TYPE.DAILY_DEBENTURE_REPORT_SUMMARY:
+      return "/reports/debenture";
+    case REPORT_SUMMARY_TYPE.DAILY_STOCK_REPORT_SUMMARY:
+      return "/reports/stock";
+    case REPORT_SUMMARY_TYPE.DAILY_INDUSTRY_REPORT_SUMMARY:
+      return "/reports/industry";
+    case REPORT_SUMMARY_TYPE.DAILY_ECONOMY_REPORT_SUMMARY:
+      return "/reports/economy";
+    case REPORT_SUMMARY_TYPE.DAILY_INVEST_REPORT_SUMMARY:
+      return "/reports/invest";
+  }
+};
+
 export default function ListGrid() {
+  const date = localStorage.getItem("date");
   const [value, setValue] = useState({
-    startDate: format(new Date(), "yyyy-MM-dd"),
-    endDate: format(new Date(), "yyyy-MM-dd"),
+    startDate: date || format(new Date(), "yyyy-MM-dd"),
+    endDate: date || format(new Date(), "yyyy-MM-dd"),
   });
 
   const {
@@ -95,12 +114,15 @@ export default function ListGrid() {
               </div>
               <div className="mt-8">
                 <h3 className="text-base font-semibold leading-6 text-gray-100">
-                  <a href="#" className="focus:outline-none">
+                  <Link
+                    href={figureLinkByType(summary.type)}
+                    className="focus:outline-none"
+                  >
                     {/* Extend touch target to entire panel */}
                     <span aria-hidden="true" className="absolute inset-0" />
                     <span>{reportNameResolver(summary.type)} 평균:</span>
                     <span className="px-2">{summary.scoreInfo.avgScore}</span>
-                  </a>
+                  </Link>
                 </h3>
                 <p className="mt-2 text-sm text-gray-500">
                   {/*Doloribus dolores nostrum quia qui natus officia quod et*/}

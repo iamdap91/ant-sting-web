@@ -1,9 +1,5 @@
 import { REPORT_SUMMARY_TYPE } from "@/app/constants";
-
-export interface AiScore {
-  reason: string;
-  score: number;
-}
+import { AiScore } from "./ai-score.interface";
 
 export interface ReportSummary {
   _id: string;

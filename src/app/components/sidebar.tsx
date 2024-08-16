@@ -15,20 +15,17 @@ import {
   REPORT_NAVIGATIONS,
   TEAM_REPORT_TITLE_HEADER,
 } from "../constants";
+import { usePathname } from "next/navigation";
 
 export default function Sidebar({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [value, setValue] = useState({
-    startDate: new Date(),
-    endDate: new Date(),
-  });
-
-  const handleValueChange = (newValue: any) => {
-    console.log("newValue:", newValue);
-    setValue(newValue);
-  };
+  const pathname = usePathname();
+  NAVIGATIONS[0].current = pathname.includes("/dashboard");
+  for (const nav of REPORT_NAVIGATIONS) {
+    nav.current = pathname === nav.href;
+  }
 
   return (
     <>
@@ -236,16 +233,9 @@ export default function Sidebar({
               <Bars3Icon aria-hidden="true" className="h-5 w-5" />
             </button>
             <ChartPieIcon aria-hidden="true" className="h-6 w-6 shrink-0" />
-            Dashboard
-            {/*<div className="">*/}
-            {/*  <Datepicker*/}
-            {/*    value={value}*/}
-            {/*    onChange={handleValueChange}*/}
-            {/*    asSingle={true}*/}
-            {/*  />*/}
-            {/*</div>*/}
+            {pathname.includes("/dashboard") ? "Dashboard" : "Reports"}
           </div>
-          {children}
+          <div className="min-h-screen">{children}</div>
         </div>
       </div>
     </>

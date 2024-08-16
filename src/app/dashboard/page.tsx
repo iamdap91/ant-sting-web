@@ -1,7 +1,5 @@
 "use client";
 import ListGrid from "@/app/components/list-grid";
-import useSWR from "swr";
-import { fetcher } from "@/app/utils";
 
 const stats = [
   {
@@ -14,15 +12,6 @@ const stats = [
 ];
 
 export default function Dashboard() {
-  const {
-    data: summaries,
-    error,
-    isLoading,
-  } = useSWR("/api/reports?date=2024-08-08", fetcher);
-
-  if (error) return <div>failed to load</div>;
-  if (isLoading) return <div>loading...</div>;
-
   return (
     <>
       <div className="py-32">
@@ -37,16 +26,15 @@ export default function Dashboard() {
                   AI 증권맨이 말아주는 오늘의 증시 정보.
                 </p>
                 <p className="text-xl leading-8 text-gray-400">
-                  1 ~ 5 점으로 점수를 매깁니다. 점수는 높을수록 좋습니다.
+                  1 ~ 5 점으로 점수를 매깁니다. 점수는 높을수록 좋습니다. 설명은 영문에서 한글로 바꾸는것도 작업 예정입니다.
                 </p>
 
                 <p className="mt-10 max-w-xl text-base leading-7 text-gray-300">
-                  Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget
-                  risus enim. Mattis mauris semper sed amet vitae sed turpis id.
-                  Id dolor praesent donec est. Odio penatibus risus viverra
-                  tellus varius sit neque erat velit. Faucibus commodo massa
-                  rhoncus, volutpat. Dignissim sed eget risus enim. Mattis
-                  mauris semper sed amet vitae sed turpis id.
+                  날짜를 조정해서 각 일자의 리포트를 확인해보세요. 투자 망해도
+                  책임은 안집니다.
+                </p>
+                <p className="mt-10 max-w-xl text-base leading-7 text-gray-300">
+                  프론트 개발자분들 존경합니다. 리스펙!
                 </p>
               </div>
               <div className="lg:flex lg:flex-auto lg:justify-center">
