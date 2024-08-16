@@ -10,10 +10,13 @@ import {
 import { ChartPieIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Bars3Icon } from "@heroicons/react/20/solid";
 import { classNames } from "../utils";
-import { NAVIGATIONS, TEAMS, TEAM_REPORT_TITLE_HEADER } from "./constants";
-import Datepicker from "react-tailwindcss-datepicker";
+import {
+  NAVIGATIONS,
+  REPORT_NAVIGATIONS,
+  TEAM_REPORT_TITLE_HEADER,
+} from "../constants";
 
-export default function Dashboard({
+export default function Sidebar({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -99,7 +102,7 @@ export default function Dashboard({
                         {TEAM_REPORT_TITLE_HEADER}
                       </div>
                       <ul role="list" className="-mx-2 mt-2 space-y-1">
-                        {TEAMS.map((team) => (
+                        {REPORT_NAVIGATIONS.map((team) => (
                           <li key={team.name}>
                             <a
                               href={team.href}
@@ -182,7 +185,7 @@ export default function Dashboard({
                     {TEAM_REPORT_TITLE_HEADER}
                   </div>
                   <ul role="list" className="-mx-2 mt-2 space-y-1">
-                    {TEAMS.map((team) => (
+                    {REPORT_NAVIGATIONS.map((team) => (
                       <li key={team.name}>
                         <a
                           href={team.href}
