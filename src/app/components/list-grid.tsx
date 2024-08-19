@@ -1,3 +1,5 @@
+"use client";
+
 import {
   AcademicCapIcon,
   BanknotesIcon,
@@ -52,12 +54,11 @@ const figureLinkByType = (type: REPORT_SUMMARY_TYPE) => {
 };
 
 export default function ListGrid() {
-  const date = localStorage.getItem("date");
-  const [value, setValue] = useState({
-    startDate: date || format(new Date(), "yyyy-MM-dd"),
-    endDate: date || format(new Date(), "yyyy-MM-dd"),
-  });
-
+  const date =
+    typeof window !== "undefined"
+      ? localStorage.getItem("date")
+      : format(new Date(), "yyyy-MM-dd");
+  const [value, setValue] = useState({ startDate: date, endDate: date });
   const {
     data: summaries,
     error,

@@ -5,29 +5,18 @@ import { useState } from "react";
 import { format } from "date-fns";
 import Datepicker from "react-tailwindcss-datepicker";
 import { fetcher } from "@/app/utils";
-import {
-  CheckIcon,
-  DocumentArrowDownIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
-import { AiScore, DebentureReport, EconomyReport } from "@/app/interfaces";
-import {
-  Dialog,
-  DialogBackdrop,
-  DialogPanel,
-  DialogTitle,
-} from "@headlessui/react";
-import SummaryModal from "@/app/components/summary-modal";
+import { DocumentArrowDownIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { AiScore, EconomyReport } from "@/app/interfaces";
+import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import { figureFontColor } from "@/app/utils/figure-font-color";
-import SummaryDrawer from "@/app/components/summary-drawer";
 import { ScoreInfo } from "@/app/interfaces/base";
 
 export default function EconomyPage() {
-  const date = localStorage.getItem("date");
-  const [value, setValue] = useState({
-    startDate: date || format(new Date(), "yyyy-MM-dd"),
-    endDate: date || format(new Date(), "yyyy-MM-dd"),
-  });
+  const date =
+    typeof window !== "undefined"
+      ? localStorage.getItem("date")
+      : format(new Date(), "yyyy-MM-dd");
+  const [value, setValue] = useState({ startDate: date, endDate: date });
   const [open, setOpen] = useState(false);
   const [scoreInfo, setScoreInfo] = useState<ScoreInfo>();
 
@@ -89,7 +78,7 @@ export default function EconomyPage() {
                     <span
                       className={figureFontColor(report?.scoreInfo?.avgScore)}
                     >
-                      {report?.scoreInfo?.avgScore || '-'}
+                      {report?.scoreInfo?.avgScore || "-"}
                     </span>
                   </div>
                   <div className="flex w-16 gap-x-2.5">

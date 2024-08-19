@@ -1,4 +1,5 @@
 "use client";
+
 import ListGrid from "@/app/components/list-grid";
 
 const stats = [
@@ -26,7 +27,8 @@ export default function Dashboard() {
                   AI 증권맨이 말아주는 오늘의 증시 정보.
                 </p>
                 <p className="text-xl leading-8 text-gray-400">
-                  1 ~ 5 점으로 점수를 매깁니다. 점수는 높을수록 좋습니다. 설명은 영문에서 한글로 바꾸는것도 작업 예정입니다.
+                  1 ~ 5 점으로 점수를 매깁니다. 점수는 높을수록 좋습니다. 설명은
+                  영문에서 한글로 바꾸는것도 작업 예정입니다.
                 </p>
 
                 <p className="mt-10 max-w-xl text-base leading-7 text-gray-300">
