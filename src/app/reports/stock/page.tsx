@@ -14,6 +14,9 @@ import { AiScore, StockReport } from "@/app/interfaces";
 import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import { figureFontColor } from "@/app/utils/figure-font-color";
 import { ScoreInfo } from "@/app/interfaces/base";
+import Link from "next/link";
+import { joinUrl } from "@/app/utils/joinUrl";
+import { N_PAY_RESEARCH_URL } from "@/app/constants";
 
 export default function StockPage() {
   const date =
@@ -56,7 +59,11 @@ export default function StockPage() {
                 className="flex flex-wrap items-center justify-between gap-x-6 gap-y-4 py-5 sm:flex-nowrap"
               >
                 <div>
-                  <p className="text-sm font-semibold leading-6 text-gray-100">
+                  <Link
+                    href={joinUrl(N_PAY_RESEARCH_URL, report.detailUrl)}
+                    target="_blank"
+                    className="text-sm font-semibold leading-6 text-gray-100"
+                  >
                     <span
                       className="hover:underline cursor-grab"
                       onClick={() => {
@@ -66,7 +73,7 @@ export default function StockPage() {
                     >
                       {report.title}
                     </span>
-                  </p>
+                  </Link>
                   <div className="mt-1 flex items-center gap-x-2 text-xs leading-5 text-gray-500">
                     <p>{report.stockFirm}</p>
                     <svg viewBox="0 0 2 2" className="h-0.5 w-0.5 fill-current">

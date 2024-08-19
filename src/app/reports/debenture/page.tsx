@@ -10,6 +10,9 @@ import { AiScore, DebentureReport } from "@/app/interfaces";
 import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import { figureFontColor } from "@/app/utils/figure-font-color";
 import { ScoreInfo } from "@/app/interfaces/base";
+import Link from "next/link";
+import { joinUrl } from "@/app/utils/joinUrl";
+import { N_PAY_RESEARCH_URL } from "@/app/constants";
 
 export default function DebenturePage() {
   const date =
@@ -52,7 +55,11 @@ export default function DebenturePage() {
                 className="flex flex-wrap items-center justify-between gap-x-6 gap-y-4 py-5 sm:flex-nowrap"
               >
                 <div>
-                  <p className="text-sm font-semibold leading-6 text-gray-100">
+                  <Link
+                    href={joinUrl(N_PAY_RESEARCH_URL, report.detailUrl)}
+                    target="_blank"
+                    className="text-sm font-semibold leading-6 text-gray-100"
+                  >
                     <span
                       className="hover:underline cursor-grab"
                       onClick={() => {
@@ -62,7 +69,7 @@ export default function DebenturePage() {
                     >
                       {report.title}
                     </span>
-                  </p>
+                  </Link>
                   <div className="mt-1 flex items-center gap-x-2 text-xs leading-5 text-gray-500">
                     <p>{report.stockFirm}</p>
                     <svg viewBox="0 0 2 2" className="h-0.5 w-0.5 fill-current">
@@ -91,7 +98,7 @@ export default function DebenturePage() {
                           setOpen(true);
                         }}
                       >
-                        <span>Detail</span>
+                        <span>Reasons</span>
                       </button>
                     </dt>
                     <dt>
@@ -141,6 +148,7 @@ export default function DebenturePage() {
                     <div className="relative mt-6 flex-1 px-4 sm:px-6">
                       {/* Your content */}
                       <div className="container p-8">
+                        <div className="container p-8"></div>
                         <ul role="list" className="divide-y divide-gray-900">
                           {(scoreInfo?.items || []).map(
                             (aiScore: AiScore, index: number) => (
@@ -150,9 +158,7 @@ export default function DebenturePage() {
                               >
                                 <div>
                                   <p className="text-sm font-semibold leading-6 text-gray-100">
-                                    <span className="hover:underline cursor-grab">
-                                      {aiScore.reason}
-                                    </span>
+                                    <span className="">{aiScore.reason}</span>
                                   </p>
                                 </div>
                                 <dl className="flex w-full flex-none justify-between gap-x-8 sm:w-auto">
