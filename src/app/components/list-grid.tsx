@@ -19,6 +19,7 @@ import { reportNameResolver } from "@/app/utils/report-name-resolver";
 import { REPORT_SUMMARY_TYPE } from "@/app/constants";
 import Link from "next/link";
 import { truncateText } from "@/app/utils/truncate-text";
+import { figureFontColor } from "@/app/utils/figure-font-color";
 
 const figureIconByType = (type: REPORT_SUMMARY_TYPE) => {
   switch (type) {
@@ -123,12 +124,19 @@ export default function ListGrid() {
                   >
                     {/* Extend touch target to entire panel */}
                     <span aria-hidden="true" className="absolute inset-0" />
-                    <span>{reportNameResolver(summary.type)} 평균:</span>
-                    <span className="px-2">{summary.scoreInfo.avgScore}</span>
+                    <span>{reportNameResolver(summary.type)} 전망 점수:</span>
+                    <span
+                      className={classNames(
+                        "px-2",
+                        figureFontColor(summary?.scoreInfo?.avgScore),
+                      )}
+                    >
+                      {summary?.scoreInfo?.avgScore || "집계중"}
+                    </span>
                   </Link>
                 </h3>
                 <p className="mt-2 text-sm text-gray-500">
-                  {truncateText(summary.summary || "")}
+                  {truncateText(summary.summary || "집계중")}
                 </p>
               </div>
               <span

@@ -71,9 +71,10 @@ export default function StockPage() {
                         setOpen(true);
                       }}
                     >
-                      {report.title}
+                      {report.stockName}::{report.title}
                     </span>
                   </Link>
+
                   <div className="mt-1 flex items-center gap-x-2 text-xs leading-5 text-gray-500">
                     <p>{report.stockFirm}</p>
                     <svg viewBox="0 0 2 2" className="h-0.5 w-0.5 fill-current">
@@ -161,9 +162,7 @@ export default function StockPage() {
                               >
                                 <div>
                                   <p className="text-sm font-semibold leading-6 text-gray-100">
-                                    <span className="hover:underline cursor-grab">
-                                      {aiScore.reason}
-                                    </span>
+                                    <span className="">{aiScore.reason}</span>
                                   </p>
                                 </div>
                                 <dl className="flex w-full flex-none justify-between gap-x-8 sm:w-auto">

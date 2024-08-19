@@ -157,7 +157,7 @@ export default function EconomyPage() {
                               >
                                 <div>
                                   <p className="text-sm font-semibold leading-6 text-gray-100">
-                                    <span className="hover:underline cursor-grab">
+                                    <span className="">
                                       {aiScore.reason}
                                     </span>
                                   </p>

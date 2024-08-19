@@ -6,7 +6,7 @@ const stats = [
   {
     id: 1,
     name: "Transactions every 24 hours",
-    value: "총 일자중 점수와 몇 퍼센트가 맞는지 넣을 예정",
+    value: "검증로직 어떻게 넣을지 짱구 굴리는중...",
   },
   { id: 2, name: "New users annually", value: "총기간 xxxx ~ yyyy" },
   { id: 3, name: "Assets under holding", value: "정확도 n %" },
@@ -26,18 +26,24 @@ export default function Dashboard() {
                 <p className="text-xl leading-8 text-gray-400">
                   AI 증권맨이 말아주는 오늘의 증시 정보.
                 </p>
-                <p className="text-xl leading-8 text-gray-400">
-                  1 ~ 5 점으로 점수를 매깁니다. 점수는 높을수록 좋습니다. 설명은
-                  영문에서 한글로 바꾸는것도 작업 예정입니다.
-                </p>
+                <div className="text-xl leading-8 text-gray-400">
+                  <p>1 ~ 5 점으로 점수를 매깁니다. 점수는 높을수록 좋습니다.</p>
+                  <p>날짜를 조정해서 각 일자의 리포트를 확인해보세요.</p>
+                </div>
 
-                <p className="mt-10 max-w-xl text-base leading-7 text-gray-300">
-                  날짜를 조정해서 각 일자의 리포트를 확인해보세요. 투자 망해도
-                  책임은 안집니다.
-                </p>
-                <p className="mt-10 max-w-xl text-base leading-7 text-gray-300">
-                  프론트 개발자분들 존경합니다. 리스펙!
-                </p>
+                <div className="mt-10 max-w-xl text-base leading-7 text-gray-300">
+                  <p>기본적으로 AI 증권맨은 보수적인 편입니다.</p>
+                  <p>
+                    대시보드상에서 뭉뚱그린 점수보다 개별 리포트들의 점수가 좀
+                    더 신뢰도가 높아보이니 개별 리포트 점수를 확인하는걸
+                    추천드리빈다.
+                  </p>
+                </div>
+                <div className="mt-10 max-w-xl text-base leading-7 text-gray-300">
+                  <p>
+                    넥스트 너무 어려워요. 프론트 개발자분들 존경합니다. 리스펙!
+                  </p>
+                </div>
               </div>
               <div className="lg:flex lg:flex-auto lg:justify-center">
                 <dl className="w-64 space-y-8 xl:w-80">
