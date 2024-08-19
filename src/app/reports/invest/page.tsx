@@ -98,7 +98,7 @@ export default function InvestPage() {
                           setOpen(true);
                         }}
                       >
-                        <span>Detail</span>
+                        <span>Reasons</span>
                       </button>
                     </dt>
                     <dt>

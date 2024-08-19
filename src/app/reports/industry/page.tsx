@@ -98,7 +98,7 @@ export default function IndustryPage() {
                           setOpen(true);
                         }}
                       >
-                        <span>Detail</span>
+                        <span>Reasons</span>
                       </button>
                     </dt>
                     <dt>
