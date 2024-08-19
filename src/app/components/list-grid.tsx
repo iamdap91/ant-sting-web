@@ -18,6 +18,7 @@ import { ReportSummary } from "../interfaces";
 import { reportNameResolver } from "@/app/utils/report-name-resolver";
 import { REPORT_SUMMARY_TYPE } from "@/app/constants";
 import Link from "next/link";
+import { truncateText } from "@/app/utils/truncate-text";
 
 const figureIconByType = (type: REPORT_SUMMARY_TYPE) => {
   switch (type) {
@@ -67,6 +68,7 @@ export default function ListGrid() {
 
   const handleValueChange = (newValue: any) => {
     console.log("newValue:", newValue);
+    localStorage.setItem("date", newValue.startDate);
     setValue(newValue);
   };
 
@@ -126,10 +128,7 @@ export default function ListGrid() {
                   </Link>
                 </h3>
                 <p className="mt-2 text-sm text-gray-500">
-                  {/*Doloribus dolores nostrum quia qui natus officia quod et*/}
-                  {/*dolorem. Sit repellendus qui ut at blanditiis et quo et*/}
-                  {/*molestiae.*/}
-                  {summary.scoreInfo.items[0].reason}
+                  {truncateText(summary.summary || "")}
                 </p>
               </div>
               <span

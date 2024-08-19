@@ -7,6 +7,7 @@ export interface ReportSummary {
   updatedAt: Date;
   date: string;
   type: REPORT_SUMMARY_TYPE;
+  summary?: string;
   scoreInfo: {
     avgScore: number;
     items: AiScore[];
