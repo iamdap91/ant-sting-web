@@ -16,7 +16,7 @@ import { format } from "date-fns";
 import { classNames, fetcher } from "@/app/utils";
 import { ReportSummary } from "../interfaces";
 import { reportNameResolver } from "@/app/utils/report-name-resolver";
-import { REPORT_SUMMARY_TYPE } from "@/app/constants";
+import { DISABLE_DATE, REPORT_SUMMARY_TYPE } from "@/app/constants";
 import Link from "next/link";
 import { truncateText } from "@/app/utils/truncate-text";
 import { figureFontColor } from "@/app/utils/figure-font-color";
@@ -80,6 +80,9 @@ export default function ListGrid() {
           value={value}
           onChange={handleValueChange}
           asSingle={true}
+          disabledDates={DISABLE_DATE}
+          startFrom={new Date("2024-01-01")}
+          startWeekOn={"sun"}
         />
       </div>
       <div className="divide-y divide-gray-200 overflow-hidden rounded-lg shadow sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0 border-2">

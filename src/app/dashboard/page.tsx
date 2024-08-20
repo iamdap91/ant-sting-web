@@ -28,7 +28,11 @@ export default function Dashboard() {
                 </p>
                 <div className="text-xl leading-8 text-gray-400">
                   <p>1 ~ 5 점으로 점수를 매깁니다. 점수는 높을수록 좋습니다.</p>
-                  <p>날짜를 조정해서 각 일자의 리포트를 확인해보세요.</p>
+                  <p>
+                    종목 정보 리포트의 애널리스트 의견과 조합해서 보는 걸
+                    추천드립니다.
+                  </p>
+                  {/*<p>날짜를 조정해서 각 일자의 리포트를 확인해보세요.</p>*/}
                 </div>
 
                 <div className="mt-10 max-w-xl text-base leading-7 text-gray-300">
@@ -38,11 +42,18 @@ export default function Dashboard() {
                     더 신뢰도가 높아보이니 개별 리포트 점수를 확인하는걸
                     추천드리빈다.
                   </p>
+                  <p className="py-2">
+                    무료 한글 AI 모델은 나사가 반쯤 빠져있어서, 어쩔 수 없이
+                    영문 모델 사용중입니다. 나중에 고도화하면 유료모델
+                    붙이는것도 고민중입니다.
+                  </p>
                 </div>
                 <div className="mt-10 max-w-xl text-base leading-7 text-gray-300">
                   <p>
-                    넥스트 너무 어려워요. 프론트 개발자분들 존경합니다. 리스펙!
+                    프론트 너무 힘들었어요. 프론트 개발자분들 존경합니다.
+                    리스펙!
                   </p>
+                  <p>혹시 같이 만드실분 계시면 슬랙 DM 주세요</p>
                 </div>
               </div>
               <div className="lg:flex lg:flex-auto lg:justify-center">

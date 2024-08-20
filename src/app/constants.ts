@@ -1,3 +1,5 @@
+import { subDays, subMonths } from "date-fns";
+
 export enum REPORT_SUMMARY_TYPE {
   DAILY_INVEST_REPORT_SUMMARY = "DAILY_INVEST_REPORT_SUMMARY",
   DAILY_DEBENTURE_REPORT_SUMMARY = "DAILY_DEBENTURE_REPORT_SUMMARY",
@@ -37,7 +39,7 @@ export const REPORT_NAVIGATIONS = [
   },
   {
     id: 3,
-    name: "종목정보 리포트",
+    name: "종목정보 리포트  🔥🔥🔥",
     href: "/reports/stock",
     initial: "종목",
     current: false,
@@ -66,3 +68,7 @@ export const REPORT_NAVIGATIONS = [
 ];
 
 export const N_PAY_RESEARCH_URL = "https://finance.naver.com/research/";
+
+export const DISABLE_DATE = [
+  { startDate: new Date("2024-01-01"), endDate: subMonths(new Date(), 2) },
+];
