@@ -103,17 +103,23 @@ export default function InvestPage() {
                         {(reports || []).map(
                           (report: InvestReport, idx: number) => (
                             <tr key={report._id}>
-                              <td className="whitespace-nowrap px-12 py-4 text-sm text-gray-300 hover:underline">
+                              <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300 flex">
                                 <Link
                                   href={joinUrl(
                                     N_PAY_RESEARCH_URL,
                                     report.detailUrl,
                                   )}
                                   target="_blank"
-                                  className="text-sm font-semibold leading-6 text-gray-100"
+                                  className="text-sm font-semibold leading-6 text-gray-100 hover:underline"
                                 >
                                   {report.title}
                                 </Link>
+                                <a href={report.file} className="pl-4">
+                                  <DocumentArrowDownIcon
+                                    aria-hidden="true"
+                                    className="h-6 w-6 text-gray-600 hover:cursor-copy hover:text-red-500"
+                                  />
+                                </a>
                               </td>
                               <td className="whitespace-nowrap px-3 py-4 text-xs text-gray-400">
                                 {report.stockFirm}
@@ -141,14 +147,14 @@ export default function InvestPage() {
                                   <span>Reasons</span>
                                 </button>
                               </td>
-                              <td className="p-4">
-                                <a href={report.file}>
-                                  <DocumentArrowDownIcon
-                                    aria-hidden="true"
-                                    className="h-6 w-6 text-gray-600 hover:cursor-copy"
-                                  />
-                                </a>
-                              </td>
+                              {/*<td className="p-4">*/}
+                              {/*  <a href={report.file}>*/}
+                              {/*    <DocumentArrowDownIcon*/}
+                              {/*      aria-hidden="true"*/}
+                              {/*      className="h-6 w-6 text-gray-600 hover:cursor-copy"*/}
+                              {/*    />*/}
+                              {/*  </a>*/}
+                              {/*</td>*/}
                             </tr>
                           ),
                         )}
