@@ -7,5 +7,6 @@ export interface StockReport extends BaseReport {
     price: number;
     targetPrice: number;
     position: string;
+    disparateRatio?: number;
   };
 }

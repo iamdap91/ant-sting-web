@@ -1,30 +1,26 @@
 "use client";
 
-import useSWR from "swr";
-import { useState } from "react";
 import { format } from "date-fns";
-import Datepicker from "react-tailwindcss-datepicker";
-import { classNames, fetcher } from "@/app/utils";
-import {
-  CheckIcon,
-  DocumentArrowDownIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
-import { AiScore, StockReport } from "@/app/interfaces";
-import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
-import { figureFontColor } from "@/app/utils/figure-font-color";
+import { useState } from "react";
 import { ScoreInfo } from "@/app/interfaces/base";
-import Link from "next/link";
+import useSWR from "swr";
+import { classNames, fetcher } from "@/app/utils";
+import Datepicker from "react-tailwindcss-datepicker";
+import { AiScore, DebentureReport, StockReport } from "@/app/interfaces";
+import { figureFontColor } from "@/app/utils/figure-font-color";
+import { DocumentArrowDownIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
+import { opinionFontStyle } from "@/app/utils/opinion-font-style";
 import { joinUrl } from "@/app/utils/joinUrl";
 import { N_PAY_RESEARCH_URL } from "@/app/constants";
-import { opinionFontStyle } from "@/app/utils/opinion-font-style";
+import Link from "next/link";
 
-export default function StockPage() {
-  const date =
-    typeof window !== "undefined"
-      ? localStorage.getItem("date")
-      : format(new Date(), "yyyy-MM-dd");
-  const [value, setValue] = useState({ startDate: date, endDate: date });
+export default function ResearchPage() {
+  // const date =
+  //   typeof window !== "undefined"
+  //     ? localStorage.getItem("date")
+  //     : format(new Date(), "yyyy-MM-dd");
+  // const [value, setValue] = useState({ startDate: date, endDate: date });
   const [open, setOpen] = useState(false);
   const [scoreInfo, setScoreInfo] = useState<ScoreInfo>();
 
@@ -32,25 +28,25 @@ export default function StockPage() {
     data: reports,
     error,
     isLoading,
-  } = useSWR(`/api/stock-reports?date=${value.startDate}`, fetcher);
+  } = useSWR(`/api/stock-reports/highest-gap`, fetcher);
 
-  const handleValueChange = (newValue: any) => {
-    console.log("newValue:", newValue);
-    localStorage.setItem("date", newValue.startDate);
-    setValue(newValue);
-  };
+  // const handleValueChange = (newValue: any) => {
+  //   console.log("newValue:", newValue);
+  //   localStorage.setItem("date", newValue.startDate);
+  //   setValue(newValue);
+  // };
 
   if (error) <div>failed to load data</div>;
 
   return (
     <div className="container p-8">
-      <div className="container p-8">
-        <Datepicker
-          value={value}
-          onChange={handleValueChange}
-          asSingle={true}
-        />
-      </div>
+      {/*<div className="container p-8">*/}
+      {/*  <Datepicker*/}
+      {/*    value={value}*/}
+      {/*    onChange={handleValueChange}*/}
+      {/*    asSingle={true}*/}
+      {/*  />*/}
+      {/*</div>*/}
       <div className="bg-gray-900">
         <div className="mx-auto">
           <div className="bg-gray-900 py-10">
@@ -58,10 +54,10 @@ export default function StockPage() {
               <div className="sm:flex sm:items-center">
                 <div className="sm:flex-auto">
                   <h1 className="text-base font-semibold leading-6 text-white">
-                    종목 정보
+                    종목 리서치
                   </h1>
                   <p className="mt-2 text-sm text-gray-300">
-                    각 종목별 주가와 목표주가, 전망에 대해 다룹니다.
+                    현재가와 목표 주가의 괴리율이 높은 종목
                   </p>
                 </div>
                 <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none"></div>
@@ -118,7 +114,7 @@ export default function StockPage() {
                             scope="col"
                             className="px-3 py-3.5 text-left text-sm font-semibold text-white"
                           >
-                            괴리율
+                            목표가 괴리율
                           </th>
                           <th
                             scope="col"
@@ -174,13 +170,11 @@ export default function StockPage() {
                                   ? "-"
                                   : report.recommendation?.targetPrice?.toLocaleString()}
                               </td>
-
                               <td className="whitespace-nowrap px-3 py-4 text-xs text-gray-400">
                                 {report.recommendation?.disparateRatio
                                   ? `${report.recommendation?.disparateRatio} %`
                                   : "-"}
                               </td>
-
                               <td
                                 className={classNames(
                                   "whitespace-nowrap px-3 py-4 text-sm",

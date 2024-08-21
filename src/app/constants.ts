@@ -1,4 +1,5 @@
 import { subDays, subMonths } from "date-fns";
+import { ChartPieIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
 export enum REPORT_SUMMARY_TYPE {
   DAILY_INVEST_REPORT_SUMMARY = "DAILY_INVEST_REPORT_SUMMARY",
@@ -9,10 +10,14 @@ export enum REPORT_SUMMARY_TYPE {
   DAILY_MARKET_INFO_REPORT_SUMMARY = "DAILY_MARKET_INFO_REPORT_SUMMARY",
 }
 
-import { ChartPieIcon } from "@heroicons/react/24/outline";
-
 export const NAVIGATIONS = [
   { name: "Dashboard", href: "/dashboard", icon: ChartPieIcon, current: false },
+  {
+    name: "Reasearch - working on it",
+    href: "/research",
+    icon: MagnifyingGlassIcon,
+    current: false,
+  },
   // { name: "Deployments", href: "#", icon: ServerIcon, current: false },
   // { name: "Activity", href: "#", icon: SignalIcon, current: false },
   // { name: "Domains", href: "#", icon: GlobeAltIcon, current: false },

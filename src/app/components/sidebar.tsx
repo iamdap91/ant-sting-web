@@ -23,6 +23,7 @@ export default function Sidebar({
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const pathname = usePathname();
   NAVIGATIONS[0].current = pathname.includes("/dashboard");
+  NAVIGATIONS[1].current = pathname.includes("/research");
   for (const nav of REPORT_NAVIGATIONS) {
     nav.current = pathname === nav.href;
   }
