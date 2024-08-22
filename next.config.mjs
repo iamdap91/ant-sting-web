@@ -7,7 +7,7 @@ const nextConfig = {
     return [
       {
         source: "/api/:path*",
-        destination: "http://211.106.184.250:8080/api/:path*",
+        destination: `http://${process.env.ANT_STING_API_URI}/api/:path*`,
       },
     ];
   },
